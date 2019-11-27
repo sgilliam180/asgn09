@@ -31,4 +31,37 @@ function convertLiquid($value, $fromUnit, $toUnit) {
   return $newValue;
 }
 
+const LENGTH_MEASUREMENT_TO_IRISH_LENGTH = array(
+  "grain" => .7,
+  "thumb-length" => 2.1,
+  "palm" => 3.3,
+  "fist" => 10.4,
+  "foot" => 25,
+  "step" => 62.5,
+  "double-step" => 1500,
+  "rod" => 3000
+);
+
+function convertToCentimeters($value, $fromUnit) {
+  if(array_key_exists($fromUnit, LENGTH_MEASUREMENT_TO_IRISH_LENGTH)) {
+    return $value * LENGTH_MEASUREMENT_TO_IRISH_LENGTH[$fromUnit];
+  } else {
+    return "Unsupported unit.";
+  }
+}
+  
+function convertFromCentimeters($value, $toUnit) {
+  if(array_key_exists($toUnit, LENGTH_MEASUREMENT_TO_IRISH_LENGTH)) {
+    return $value / LENGTH_MEASUREMENT_TO_IRISH_LENGTH[$toUnit];
+  } else {
+    return "Unsupported unit.";
+  }
+}
+
+function convertIrishLength($value, $fromUnit, $toUnit) {
+  $centimeterValue = convertToCentimeters($value, $fromUnit);
+  $newValue = convertFromCentimeters($centimeterValue, $toUnit);
+  return $newValue;
+}
+
 ?>
