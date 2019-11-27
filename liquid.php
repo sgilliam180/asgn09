@@ -1,60 +1,6 @@
 <?php
 
-function convertToGallons($value, $fromUnit) {
-  switch($fromUnit) {
-    case 'bucket':
-      return $value * 4;
-      break;
-    case 'butt':
-      return $value * 108;
-      break;
-    case 'firkin':
-      return $value * 9;
-      break;
-    case 'hogshead':
-      return $value * 54;
-      break;
-    case 'pint':
-      return $value * 0.125;
-      break;
-    case 'gallon':
-      return $value;
-      break;
-    default:
-      return "Unsupported unit.";
-  }
-}
-  
-function convertFromGallons($value, $toUnit) {
-  switch($toUnit) {
-    case 'bucket':
-      return $value / 4;
-      break;
-    case 'butt':
-      return $value / 108;
-      break;
-    case 'firkin':
-      return $value / 9;
-      break;
-    case 'hogshead':
-      return $value / 54;
-      break;
-    case 'pint':
-      return $value / 0.125;
-      break;
-    case 'gallon';
-      return $value;
-      break;
-    default:
-      return "Unsupported unit.";
-  }
-}
-
-function convertLiquid($value, $fromUnit, $toUnit) {
-  $gallonValue = convertToGallons($value, $fromUnit);
-  $newValue = convertFromGallons($gallonValue, $toUnit);
-  return $newValue;
-}
+require_once('includes/functions.php');
 
 $fromValue = '';
 $fromUnit = '';
